@@ -40,10 +40,6 @@ SQLMesh is a data transformation framework that brings software engineering best
    pip install -r requirements.txt
    ```
 
-4. Initialize SQLMesh:
-   ```bash
-   sqlmesh init
-   ```
 
 ## Resources
 
