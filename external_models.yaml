@@ -1,0 +1,23 @@
+- name: '[lh_fake_data].[dbo].[sales_transactions]'
+  columns:
+    business_date: DATE
+    channel: VARCHAR(8000)
+    currency: VARCHAR(8000)
+    customer_id: BIGINT
+    gross_amount: FLOAT(53)
+    product_id: BIGINT
+    quantity: BIGINT
+    sale_id: BIGINT
+    sale_ts: DATETIME2(6)
+    unit_price: FLOAT(53)
+  gateway: fabric
+- name: '[wh_sample].[dbo].[Geography]'
+  columns:
+    GeographyID: INT
+    ZipCodeBKey: VARCHAR(10)
+    County: VARCHAR(50)
+    City: VARCHAR(50)
+    State: VARCHAR(50)
+    Country: VARCHAR(50)
+    ZipCode: VARCHAR(50)
+  gateway: fabric

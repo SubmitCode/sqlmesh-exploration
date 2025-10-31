@@ -1,0 +1,51 @@
+# --- Gateway Connection ---
+gateways:
+  fabric:
+    connection:
+      # Target warehouse (wh_silver) - where models are written
+      # For more information on configuring the connection to your execution engine, visit:
+      # https://sqlmesh.readthedocs.io/en/stable/reference/configuration/#connection
+      # https://sqlmesh.readthedocs.io/en/stable/integrations/engines/fabric/#connection-options
+      type: fabric
+      host: {{ env_var('target') }}
+      workspace_id: {{ env_var('workspace') }}
+      tenant_id: {{ env_var('tenant_id') }}
+      user: {{ env_var('user') }}
+      password: {{ env_var('password') }}
+      database: wh_silver
+      odbc_properties:
+        Authentication: ActiveDirectoryServicePrincipal
+
+  fabric_source:
+    connection:
+      # Source warehouse (wh_sample) - where we read external data from
+      type: fabric
+      host: {{ env_var('source') }}
+      workspace_id: {{ env_var('workspace') }}
+      tenant_id: {{ env_var('tenant_id') }}
+      user: {{ env_var('user') }}
+      password: {{ env_var('password') }}
+      database: wh_sample
+      odbc_properties:
+        Authentication: ActiveDirectoryServicePrincipal 
+
+default_gateway: fabric
+
+# --- Model Defaults ---
+# https://sqlmesh.readthedocs.io/en/stable/reference/model_configuration/#model-defaults
+
+model_defaults:
+  dialect: fabric
+  start: 2025-10-28 # Start date for backfill history
+  cron: '@daily'    # Run models daily at 12am UTC (can override per model)
+
+# --- Linting Rules ---
+# Enforce standards for your team
+# https://sqlmesh.readthedocs.io/en/stable/guides/linter/
+
+linter:
+  enabled: true
+  rules:
+    - ambiguousorinvalidcolumn
+    - invalidselectstarexpansion
+    - noambiguousprojections
