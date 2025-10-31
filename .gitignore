@@ -11,10 +11,10 @@ env/
 *.egg-info/
 dist/
 build/
+.*/
 
 # SQLMesh
 .cache/
-audits/
 logs/
 
 # IDE
@@ -32,8 +32,4 @@ logs/
 .DS_Store
 Thumbs.db
 
-# Project specific
-models/
-seeds/
-macros/
-tests/
+

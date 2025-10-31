@@ -18,18 +18,29 @@ SQLMesh is a data transformation framework that brings software engineering best
 
 ## Getting Started
 
-1. Create a virtual environment:
+1. Create a `.env` file in the project root with the following variables:
+   ```bash
+   target=<your_target_warehouse_host>
+   source=<your_source_warehouse_host>
+   workspace=<your_workspace_id>
+   tenant_id=<your_tenant_id>
+   user=<your_service_principal_user>
+   password=<your_service_principal_password>
+   ```
+   These variables are referenced in [config.yaml](config.yaml) for connecting to Microsoft Fabric warehouses.
+
+2. Create a virtual environment:
    ```bash
    python -m venv .venv
    source .venv/bin/activate
    ```
 
-2. Install dependencies:
+3. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
-3. Initialize SQLMesh:
+4. Initialize SQLMesh:
    ```bash
    sqlmesh init
    ```
